@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  client:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile # Ensure there's a Dockerfile in the ./client directory
+    ports:
+      - "80:80" # Map the container's port 80 to the host's port 80
+    depends_on:
+      - server
+    restart: always
+
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile # Ensure there's a Dockerfile in the ./server directory
+    ports:
+      - "3000:3000" # Map the container's port 3000 to the host's port 3000
+    restart: always
